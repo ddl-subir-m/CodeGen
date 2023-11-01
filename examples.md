@@ -29,6 +29,7 @@ run;
 **English - R**
 
 ```
-Give me code to run a monte carlo markov chain
+Give me code to load data from a csv and build a logistic regression model
+
 ```
 
