@@ -9,7 +9,7 @@ import transformers
 cuda_install_dir = os.path.join(os.path.dirname(nvidia.__file__), 'cuda_runtime', 'lib')
 os.environ['LD_LIBRARY_PATH'] = cuda_install_dir
 
-MODEL_PATH = '/mnt/data/llama2-ct'
+MODEL_PATH = '/mnt/data/codellama-ct'
 MODEL_DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 PROMPT_TEMPLATE = "<s>[INST] {dialogue} [/INST]"
 
