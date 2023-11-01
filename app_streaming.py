@@ -11,17 +11,25 @@ os.environ['LD_LIBRARY_PATH'] = cuda_install_dir
 
 MODEL_PATH = '/mnt/data/codellama-ct'
 MODEL_DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
-PROMPT_TEMPLATE = "<s>[INST] {dialogue} [/INST]"
+PROMPT_TEMPLATE= "You are a helpful polite code assistant.Please write R code using statistics libraries for example stats and plotting libraries for example ggplot for the task that follows. Output the result in markdown \n Task : {dialogue} \n ```r"
 
 # Load the ctranslate model
 generator = ctranslate2.Generator(MODEL_PATH, device=MODEL_DEVICE) if 'generator' not in locals() else generator
-tokenizer = transformers.AutoTokenizer.from_pretrained('subirmansukhani/llama-2-7b-miniguanaco') if 'tokenizer' not in locals() else tokenizer
+tokenizer = transformers.AutoTokenizer.from_pretrained('codellama/CodeLlama-7b-Instruct-hf') if 'tokenizer' not in locals() else tokenizer
 
 st.session_state.setdefault("messages", [])
 
 # Sidebar with Clear Conversation button
 with st.sidebar:
     st.title("Settings")
+    selected_language = st.radio("Choose a language:", ["SAS-R", "English-R"])
+    
+    # Update the PROMPT_TEMPLATE based on the selected language
+    if selected_language == "English-R":
+        PROMPT_TEMPLATE= "You are a helpful polite code assistant.Please write R code using statistics libraries for example stats and plotting libraries for example ggplot for the task that follows. Output the result in markdown \n Task : {dialogue} \n ```r"
+    else:
+        PROMPT_TEMPLATE= "You are a helpful polite code assistant.Please write R code using statistics libraries for example stats and plotting libraries for example ggplot for the SAS code that follows. Output the result in markdown \n SAS Code : {dialogue} \n ```r"
+        
     if st.button('Clear Conversation'):
         st.session_state.messages = []
 
