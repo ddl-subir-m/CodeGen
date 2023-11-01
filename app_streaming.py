@@ -62,7 +62,7 @@ if (user_input := st.chat_input("How can I help?")):
                 full_response += word
                 output_ids = []
             output_ids.append(step_result.token_id)
-            message_placeholder.markdown(full_response)
+            message_placeholder.code(full_response)
 
         if output_ids:
             word = tokenizer.decode(output_ids)
