@@ -68,5 +68,5 @@ if (user_input := st.chat_input("How can I help?")):
             word = tokenizer.decode(output_ids)
             full_response += word.replace("</s>", "")
         
-        message_placeholder.markdown(full_response)
+        message_placeholder.code(full_response)
         st.session_state.messages.append({"role": "assistant", "content": full_response})
