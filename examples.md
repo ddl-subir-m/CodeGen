@@ -1,4 +1,4 @@
-SAS - R 
+**SAS - R** 
 
 ```
 Simple Linear Regression and scatter plot with overlay in batch mode
@@ -26,6 +26,6 @@ proc plot data=crackreg;
 run;
 ```
 
-English - R
+**English - R**
 ```Give me code to run a monte carlo markov chain ```
 
