@@ -53,7 +53,7 @@ if (user_input := st.chat_input("How can I help?")):
     # Generate response
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
-        step_results = generator.generate_tokens(tokens, sampling_temperature=0.1, sampling_topk=20, max_length=1024)
+        step_results = generator.generate_tokens(tokens, sampling_temperature=0.4, sampling_topk=20, max_length=1024)
         
         full_response = ""
         output_ids = []
