@@ -30,6 +30,5 @@ run;
 
 ```
 Give me code to load data from a csv and build a logistic regression model in a few lines of code
-
 ```
 
