@@ -17,7 +17,7 @@ os.environ['LD_LIBRARY_PATH'] =  cuda_install_dir
 model_device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
-model_path = '/mnt/artifacts/codellama-ct2'
+model_path = '/mnt/artifacts/codellama-ct'
 model_device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # load the ctranslate model
@@ -25,8 +25,7 @@ generator = ctranslate2.Generator(model_path, device=model_device)
 tokenizer = transformers.AutoTokenizer.from_pretrained('codellama/CodeLlama-7b-Instruct-hf')
 
 
-
-prompt_template = f"<s>[INST] {{dialogue}} [/INST]"
+prompt_template= f"You are a helpful polite code assistant.Please write R code using statistics libraries for example stats and plotting libraries for example ggplot for the task that follows. Output the result in markdown \n Task : {{dialogue}} \n ```r"
      
 #Generate the output from the LLM
 def generate(prompt: str = None, pct_new_tokens: float = 1.2):
