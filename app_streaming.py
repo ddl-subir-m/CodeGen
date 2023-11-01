@@ -22,11 +22,13 @@ st.session_state.setdefault("messages", [])
 # Sidebar with Clear Conversation button
 with st.sidebar:
     st.title("Settings")
-    selected_language = st.radio("Choose a language:", ["SAS-R", "English-R"])
+    selected_language = st.radio("Choose a language:", ["English-R", "English-Python" , "SAS-R"])
     
     # Update the PROMPT_TEMPLATE based on the selected language
     if selected_language == "English-R":
         PROMPT_TEMPLATE= "You are a helpful polite code assistant.Please write R code using statistics libraries for example stats and plotting libraries for example ggplot for the task that follows. Output the result in markdown \n Task : {dialogue} \n ```r"
+    elif selected_language == "English-Python":
+                PROMPT_TEMPLATE= "You are a helpful polite code assistant.Please write Python code using statistics libraries for example scipy and plotting libraries for example matplotlib for the task that follows. Output the result in markdown \n Task : {dialogue} \n ```python"
     else:
         PROMPT_TEMPLATE= "You are a helpful polite code assistant.Please write R code using statistics libraries for example stats and plotting libraries for example ggplot for the SAS code that follows. Output the result in markdown \n SAS Code : {dialogue} \n ```r"
         
